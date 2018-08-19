@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "AZRetailDWHSSAS", "AZRetailDWHSSAS\AZRetailDWHSSAS.dwproj", "{B57A3F60-2C2B-4BC8-A0F0-D6C68559CE6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B57A3F60-2C2B-4BC8-A0F0-D6C68559CE6E}.Development|Default.ActiveCfg = Development
+		{B57A3F60-2C2B-4BC8-A0F0-D6C68559CE6E}.Development|Default.Build.0 = Development
+		{B57A3F60-2C2B-4BC8-A0F0-D6C68559CE6E}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0F6AE51-9781-4E48-B700-8D3056F209EF}
+	EndGlobalSection
+EndGlobal
