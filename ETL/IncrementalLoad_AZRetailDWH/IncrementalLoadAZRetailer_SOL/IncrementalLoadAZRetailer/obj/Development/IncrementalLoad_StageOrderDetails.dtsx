@@ -1,0 +1,744 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/16/2018 2:28:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JFROBKA"
+  DTS:CreatorName="DESKTOP-JFROBKA\johnb"
+  DTS:DTSID="{857BBB30-DBFD-4DF8-9CC0-4470C070FC91}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="IncrementalLoad_StageOrderDetails"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{0803EF98-8A27-4001-9EC7-3CE34A8E8AEA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9E9EF916-E08A-426D-BE5B-413761FA4D60}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OrderDetails_CDC_State">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CDC Control Task -  Get Processing Range"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{3f67a7f8-53ce-4af4-b513-97c820a13428}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDC Control Task -  Get Processing Range"
+      DTS:TaskContact="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="CDC_State"
+          TaskOperation="GetProcessingRange"
+          OperationParameter=""
+          StateConnection="CDC_State"
+          StateVariable="User::OrderDetails_CDC_State"
+          AutomaticStatePersistence="True"
+          StateName="OrderDetails_CDC_State"
+          StateTable="[dbo].[cdc_OrderDetails_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CDC Control Task - Set Processed Range"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{b06f7c3f-c249-4757-91d2-cf2cfb032f9b}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDC Control Task - Set Processed Range"
+      DTS:TaskContact="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="CDC_State"
+          TaskOperation="MarkProcessedRange"
+          OperationParameter=""
+          StateConnection="CDC_State"
+          StateVariable="User::OrderDetails_CDC_State"
+          AutomaticStatePersistence="True"
+          StateName="OrderDetails_CDC_State"
+          StateTable="[dbo].[cdc_OrderDetails_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task - Load StageOrderDetails"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{470c4ab6-f48d-48d1-8c0f-cf9ba3e17b69}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task - Load StageOrderDetails"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
+              name="CDC Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="An SSIS string package variable to store the CDC state of the current CDC state."
+                  expressionType="Notify"
+                  name="StateVariable"
+                  typeConverter="Attunity.SqlServer.CDCSrc.PackageVariablesTypeConverter">User::OrderDetails_CDC_State</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
+                  expressionType="Notify"
+                  name="CDCProcessingMode"
+                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
+                  expressionType="Notify"
+                  name="CaptureInstance">dbo_OrderDetails</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time out."
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, a special output column called ‘__$reprocessing ’ is added. This output column is true for each data row during the initial processing range, or when the previous CDC run&#xA;was stopped without finishing. The default value is false (the __$reprocessing output column is not generated). This special output column allows the SSIS developer to handle consistency errors differently when working on the Initial Processing Range or the previous CDC run was stopped."
+                  expressionType="Notify"
+                  name="ReprocessingIndication">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Connections[Connection]"
+                  connectionManagerID="{A491B70A-C9AB-48C5-8641-5DFC7300E090}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CDC_State]"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                      name="__$start_lsn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$operation]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$operation]"
+                      name="__$operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                      length="128"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                      name="__$update_mask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[OrderID]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[OrderID]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[LINENO]"
+                      dataType="i2"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[LINENO]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[LINENO]"
+                      name="LINENO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[ProductNumber]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[ProductNumber]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[ProductNumber]"
+                      name="ProductNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Price]"
+                      dataType="numeric"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Price]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Price]"
+                      name="Price"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Cost]"
+                      dataType="numeric"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Cost]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Cost]"
+                      name="Cost"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$command_id]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[__$command_id]"
+                      name="__$command_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$start_lsn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                      dataType="i4"
+                      name="__$operation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      name="__$update_mask" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[LINENO]"
+                      dataType="i2"
+                      name="LINENO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[ProductNumber]"
+                      dataType="i4"
+                      name="ProductNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="20"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Cost]"
+                      dataType="numeric"
+                      name="Cost"
+                      precision="20"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                      dataType="i4"
+                      name="__$command_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput]"
+                  isErrorOut="true"
+                  name="ErrorOutput">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      name="__$start_lsn" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                      name="__$operation" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      name="__$update_mask" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[OrderID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[LINENO]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[LINENO]"
+                      name="LINENO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ProductNumber]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ProductNumber]"
+                      name="ProductNumber" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Price]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Price]"
+                      name="Price"
+                      precision="20"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Cost]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Cost]"
+                      name="Cost"
+                      precision="20"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                      name="__$command_id" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StageOrderDetails]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4758A7E6-39FA-4885-BD95-E7D2A1982167}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LINENO]"
+                      cachedDataType="i2"
+                      cachedName="LINENO"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LINENO]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[LINENO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductNumber]"
+                      cachedDataType="i4"
+                      cachedName="ProductNumber"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[ProductNumber]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Price]"
+                      cachedDataType="numeric"
+                      cachedName="Price"
+                      cachedPrecision="20"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cost]"
+                      cachedDataType="numeric"
+                      cachedName="Cost"
+                      cachedPrecision="20"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Cost]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantitySold]"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Quantity]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LINENO]"
+                      dataType="i2"
+                      name="LINENO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductCode]"
+                      dataType="i4"
+                      name="ProductCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                      dataType="cy"
+                      name="UnitCost" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantitySold]"
+                      dataType="i4"
+                      name="QuantitySold" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task - Load StageOrderDetails.Paths[Output]"
+              endId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Output"
+              startId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task - Truncate StageOrderDetails"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{24943AA4-DF43-4FA6-8FAF-78E7537B53AE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task - Truncate StageOrderDetails"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4758A7E6-39FA-4885-BD95-E7D2A1982167}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE StageOrderDetails" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1A142CC1-1CDF-4379-9E74-2459FC228D08}"
+      DTS:From="Package\CDC Control Task -  Get Processing Range"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task - Load StageOrderDetails" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{b440c04d-d057-40ca-b06f-e3d65c2f8dca}"
+      DTS:From="Package\Data Flow Task - Load StageOrderDetails"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\CDC Control Task - Set Processed Range" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3123A34F-A133-4112-86FA-28829D848FF0}"
+      DTS:From="Package\Execute SQL Task - Truncate StageOrderDetails"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\CDC Control Task -  Get Processing Range" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="278,42"
+          Id="Package\CDC Control Task -  Get Processing Range"
+          TopLeft="18.5,107.5" />
+        <NodeLayout
+          Size="270,42"
+          Id="Package\CDC Control Task - Set Processed Range"
+          TopLeft="22.5000000000001,311.5" />
+        <NodeLayout
+          Size="273,42"
+          Id="Package\Data Flow Task - Load StageOrderDetails"
+          TopLeft="21,209.5" />
+        <NodeLayout
+          Size="304,42"
+          Id="Package\Execute SQL Task - Truncate StageOrderDetails"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="157.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="157.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="157.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task - Load StageOrderDetails">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination"
+          TopLeft="68,107" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task - Load StageOrderDetails\CDC Source"
+          TopLeft="91,23" />
+        <EdgeLayout
+          Id="Package\Data Flow Task - Load StageOrderDetails.Paths[Output]"
+          TopLeft="155.75,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Load StageOrderDetails\CDC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "IncrementalLoadAZRetailer", "IncrementalLoadAZRetailer\IncrementalLoadAZRetailer.dtproj", "{34440288-FDEB-4927-A7EF-ACB4527A8053}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34440288-FDEB-4927-A7EF-ACB4527A8053}.Development|Default.ActiveCfg = Development
+		{34440288-FDEB-4927-A7EF-ACB4527A8053}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03FBDF5D-6209-46BF-B8B0-797EB493436A}
+	EndGlobalSection
+EndGlobal
