@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_StageOrders"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{3A754112-BA39-403B-BD07-8996939FD770}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{FCC099E2-F308-43CE-89CF-CEE8883D6DB9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>

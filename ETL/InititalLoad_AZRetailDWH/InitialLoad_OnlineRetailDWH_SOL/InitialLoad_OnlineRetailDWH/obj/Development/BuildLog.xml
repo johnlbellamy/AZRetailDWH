@@ -2,43 +2,43 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>InitialLoad_AZRetailDWH</Name>
-    <LastWriteTime>2018-08-17T00:12:37.2202911Z</LastWriteTime>
+    <LastWriteTime>2018-08-22T23:05:51.0712649Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Load_DimStore.dtsx</Name>
-      <LastWriteTime>2018-08-18T23:31:24.3271747Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T23:09:53.937497Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_DimTime.dtsx</Name>
-      <LastWriteTime>2018-08-13T20:24:31.4460214Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T23:10:52.9056964Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_DimCustomer.dtsx</Name>
-      <LastWriteTime>2018-08-18T23:25:51.6528553Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T23:05:51.02624Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_DimLocation.dtsx</Name>
-      <LastWriteTime>2018-08-18T23:26:20.9949387Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T23:03:29.3213585Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_DimProduct.dtsx</Name>
-      <LastWriteTime>2018-08-19T04:00:49.5809613Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T23:08:13.1525506Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_FactOrders.dtsx</Name>
-      <LastWriteTime>2018-08-18T23:32:25.1928039Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T23:19:54.0940169Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_AZRetailDWH.dtsx</Name>
-      <LastWriteTime>2018-08-17T00:05:24.718824Z</LastWriteTime>
+      <LastWriteTime>2018-08-22T22:23:26.0425565Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

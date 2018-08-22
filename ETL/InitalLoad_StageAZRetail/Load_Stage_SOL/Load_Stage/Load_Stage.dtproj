@@ -26,11 +26,10 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-JFROBKA</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzJ7FbGLXQUWL36uverKWjgAAAAACAAAAAAAQZgAAAAEAACAAAAAP/w86F18MiV/G78FnkP5i9cyg3sAs8+LR62W3bWwERQAAAAAOgAAAAAIAACAAAABkurynCpR3V+JMVoGaPLiURG11s462tQeIs/c3146s+JAAAABIK7/6QN7xZk6/A8yJelEWEcZS49hbh4OqlxKrJK5+G9IY7KDdBszv5zOF3Zcvc1tA4VcnjDhxd0Dce9qxYaAx3xVPpDGLSa0qoPct16W0cs6OOmJ0ZsUo49F4tJ9/c5GkhFMqRIb3AHZ3H9t2SNPtaWufhWUkfUoUIdSM21+F/0j+YSAd5T/yjDgiqPAxZdlAAAAAC2KyxTfG/FsDE+YggKOc4FTctTujwGvTi11/qDCIXDpy1KFy35HuRCWsxtyEzzlvR17yceM3WbOKlVPi6b84pA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATxMuUiCm/06it3mpu1+/IAAAAAACAAAAAAAQZgAAAAEAACAAAAAn0K3Fq2IadGqzH+BKiMu8aKtdDL9RVf3Mq+MFv5+xswAAAAAOgAAAAAIAACAAAAAk5rqgah/ELnXzXYXQ+lavpgWFvvQNIDfgw29yh0S+LJAAAADKjEmjbG3dEBhb3YhOCu9NosYRvwR3rXes1uIawsZMgPH/tfZS8o+kyqdoU2T+waWadQ3wjS86/XWdI/awKxIR96ec7Dl28ZBhgeu/4ZO4H75RRr6gASkwrLk1lMw6kTyUVhWA00fXe2V7Hn66SJ3V7eLxvKdrAFDD61JqNxYXwhm/cMkJjcM1gjmI3KhKgktAAAAADSOfO/UzXjL9OJTbbNDQMNOk3ijdimZVPDZda+FdNHjtif88+/ZBRbX3UVOnBZyNF8PW5Hy/YZcBPi3AqRn4Kw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Load_StageCustomer.dtsx" SSIS:EntryPoint="0" />
           <SSIS:Package SSIS:Name="Load_StageOrders.dtsx" SSIS:EntryPoint="0" />
           <SSIS:Package SSIS:Name="Load_StageOrderDetails.dtsx" SSIS:EntryPoint="0" />
           <SSIS:Package SSIS:Name="Load_StageAZRetail.dtsx" SSIS:EntryPoint="1" />
@@ -53,7 +52,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetail;Integrated Security=True;Application Name=SSIS-Load_Stage-{AAABACAB-F9F6-4187-83AD-AA83284AEB1E}LocalHost.OnlineRetail1;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetailOLTP;Integrated Security=True;Application Name=SSIS-Load_Stage-{AAABACAB-F9F6-4187-83AD-AA83284AEB1E}LocalHost.OnlineRetail1;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -68,7 +67,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">AZRetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">AZRetailOLTP</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -141,7 +140,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetail;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetailOLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -156,7 +155,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">AZRetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">AZRetailOLTP</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -308,33 +307,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Load_StageCustomer.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1140F29F-1A66-4471-A3A2-C30AA2A2CB5C}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Load_StageCustomer</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{72EE8BEB-15C4-4D51-BE78-5AD771187669}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="Load_StageOrders.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{AB32E1F4-05B5-4DFC-9428-5EACC56BE136}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Load_StageOrders</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1211AAB5-0FE3-42B2-9DA9-8795BD430AB5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FCC099E2-F308-43CE-89CF-CEE8883D6DB9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -348,10 +330,10 @@
                 <SSIS:Property SSIS:Name="Name">Load_StageOrderDetails</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">12</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D0953B7C-A196-4DAA-8E21-FEA4CDE1F033}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E0D25055-7925-4A46-8090-A51FFD21F071}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -365,10 +347,10 @@
                 <SSIS:Property SSIS:Name="Name">Load_StageAZRetail</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{980EE320-545E-4605-9D36-D05FF8D75685}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{65CD0578-63BF-4ECB-9F9B-36467157000E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

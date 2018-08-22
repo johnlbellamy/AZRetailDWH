@@ -19,3 +19,15 @@ Changed database context to 'master'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Msg 22830, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_db_internal, Line 198
+Could not update the metadata that indicates database AZRetailOLTP is enabled for Change Data Capture. The failure occurred when executing the command 'SetCDCTracked(Value = 1)'. The error returned was 15517: 'Cannot execute as the database principal because the principal "dbo" does not exist, this type of principal cannot be impersonated, or you do not have permission.'. Use the action and error to determine the cause of the failure and resubmit the request.
+Msg 22901, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_table, Line 38
+The database 'AZRetailOLTP' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view.
+Msg 22901, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_table, Line 38
+The database 'AZRetailOLTP' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view.
+Msg 22901, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_table, Line 38
+The database 'AZRetailOLTP' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.

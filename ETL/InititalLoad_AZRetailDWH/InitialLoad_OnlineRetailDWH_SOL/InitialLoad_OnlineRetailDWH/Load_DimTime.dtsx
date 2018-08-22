@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{448BCCF8-B7C2-4464-BE29-9C25B72A9C2F}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{390FF1AD-1D4C-4915-9CB0-7C6361DE2014}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{3C9CA2AF-FCA4-4241-8A2B-7934C09DB602}"
+          SQLTask:Connection="{5611C86F-96E4-4236-8398-637B3998FDB8}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT TOP(100) * &#xA;FROM DimTime)&#xA;Begin&#xA;DECLARE @start_date DATETIME&#xA;&#xA;DECLARE @end_date DATETIME&#xA;&#xA;DECLARE @iter DATETIME&#xA;&#xA;DECLARE @year SMALLINT&#xA;&#xA;DECLARE @month tinyint&#xA;&#xA;DECLARE @month_string VARCHAR(2)&#xA;&#xA;DECLARE @day_string VARCHAR(2)&#xA;&#xA;DECLARE @quarter TINYINT&#xA;&#xA;DECLARE @day_of_year SMALLINT&#xA;&#xA;DECLARE @week_no INT&#xA;&#xA;DECLARE @key VARCHAR(20)&#xA;&#xA;DECLARE @full_date char(10)&#xA;&#xA;SET @end_date =   CAST('2019-03-01' AS DATETIME)&#xA;SET @start_date = CAST('2010-01-01' AS DATETIME)&#xA;SET @iter = @start_date&#xA;&#xA;WHILE @iter &lt;= @end_date&#xA;BEGIN&#xA;    SET @year = DATEPART(YEAR, @iter)&#xA;    SET @day_of_year  = DATEPART(DAYOFYEAR, @iter)&#xA;    SET @week_no  = DATEPART(WEEK, @iter)&#xA;    SET @quarter  = DATEPART(QUARTER, @iter)&#xA;    SET @full_date = CONVERT(CHAR(10), @iter, 121)&#xA;    SET @month_string  = SUBSTRING(@full_date, 9, 10)&#xA; SET @month = DATEPART(MONTH,@iter)&#xA;    SET @day_string  = SUBSTRING(@full_date, 6, 7)&#xA;    SET @key = CAST(@year AS VARCHAR(4)) + @month_string + @day_string  &#xA;    SET @full_date = CONVERT(CHAR(10), @iter, 121)&#xA;&#xA;  INSERT INTO [dbo].[DimTime](&#xA;  [TimeKey]&#xA;  ,[FullDateTime] &#xA;  ,[FullDate]&#xA;  ,[YearNo]&#xA;  ,[Quarter] &#xA;  ,[Month] &#xA;  ,[WeekNo] &#xA;  ,[DayNo]&#xA;  )&#xA;  SELECT DISTINCT&#xA;  CAST(@key AS int) AS [TimeKey], &#xA;   @iter&#xA;   ,@full_date&#xA;   ,@year AS [YearNo]&#xA;   ,@quarter AS [Quarter]&#xA;   ,@month  AS [Month]&#xA;   ,@week_no AS [WeekNo]&#xA;   ,@day_of_year AS  [DayNo]&#xA;   &#xA;  SET @iter = DATEADD(DAY, 1, @iter) &#xA;END&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>

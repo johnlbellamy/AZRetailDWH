@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_DimLocation"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{6E70752B-0117-4082-A372-2EC8977C6F10}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{117A4C64-0FBD-402B-8C2C-E6DB570FE8C5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -185,8 +185,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{3C9CA2AF-FCA4-4241-8A2B-7934C09DB602}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DestinationForLookup]"
+                  connectionManagerID="{5611C86F-96E4-4236-8398-637B3998FDB8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -342,7 +342,7 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{8152ED5C-F0EF-4CA0-990C-285BEEE94710}:external"
+                  connectionManagerID="{502B9B33-D785-4C54-8ACF-00C504CCB339}:external"
                   connectionManagerRefId="Project.ConnectionManagers[OLTP]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />

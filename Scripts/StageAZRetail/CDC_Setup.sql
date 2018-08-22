@@ -1,5 +1,10 @@
 USE AZRetailOLTP
 GO
+
+-- Need to change ownership of DBA
+EXEC sp_changedbowner 'sa'
+GO
+
 -- enable CDC if it is disabled
 if not exists (select * from sys.databases where name = db_name() and is_cdc_enabled=1)
 	exec sys.sp_cdc_enable_db
