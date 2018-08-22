@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_DimCustomer"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{305E4994-34A9-4DD7-A157-1BBF1C3E8DD8}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{DA6F072D-8C59-4525-B558-53A3227F105D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -114,7 +114,7 @@
                   description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
                   expressionType="Notify"
                   name="CDCProcessingMode"
-                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">2</property>
+                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">0</property>
                 <property
                   dataType="System.String"
                   description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
@@ -214,6 +214,15 @@
                       lineageId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].Columns[__$command_id]"
                       name="__$command_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].Columns[__$seqval]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].ExternalColumns[__$seqval]"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].Columns[__$seqval]"
+                      name="__$seqval"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -253,6 +262,11 @@
                       refId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
                       dataType="i4"
                       name="__$command_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].ExternalColumns[__$seqval]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$seqval" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -316,6 +330,12 @@
                       dataType="i4"
                       lineageId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
                       name="__$command_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[ErrorOutput].Columns[__$seqval]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[ErrorOutput].Columns[__$seqval]"
+                      name="__$seqval" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -404,6 +424,12 @@
                       cachedLength="50"
                       cachedName="Copy of LastName"
                       lineageId="Package\Data Flow Task - Incremental Load DimCsutomer\Data Conversion - Convert FirstName LastName to NonUnicode.Outputs[Data Conversion Output].Columns[Copy of LastName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Splitter.Inputs[Input].Columns[__$seqval]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$seqval"
+                      lineageId="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Source.Outputs[Output].Columns[__$seqval]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1526,34 +1552,8 @@ WHERE CustomerKey = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Execute SQL Task - Truncate StageCustomer"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{9EE407B2-C8B8-469D-A2E8-32B0DE389CF9}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task - Truncate StageCustomer"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{4758A7E6-39FA-4885-BD95-E7D2A1982167}"
-          SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE StageCustomer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{16A2268F-8613-4E7A-A50A-BC5D98820888}"
-      DTS:From="Package\Execute SQL Task - Truncate StageCustomer"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\CDC Control Task -  Get Processing Range" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -1595,32 +1595,6 @@ WHERE CustomerKey = ?</property>
           Size="311,42"
           Id="Package\Data Flow Task - Incremental Load DimCsutomer"
           TopLeft="5.50000000000003,209.5" />
-        <NodeLayout
-          Size="290,42"
-          Id="Package\Execute SQL Task - Truncate StageCustomer"
-          TopLeft="16,5.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="161,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="161,251.5">
@@ -1690,6 +1664,10 @@ WHERE CustomerKey = ?</property>
           Id="Package\Data Flow Task - Incremental Load DimCsutomer\OLE DB Command - Delete"
           TopLeft="512,515.5" />
         <NodeLayout
+          Size="136,42"
+          Id="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Splitter"
+          TopLeft="296,312" />
+        <NodeLayout
           Size="210,42"
           Id="Package\Data Flow Task - Incremental Load DimCsutomer\OLE DB Command - Update"
           TopLeft="241,515.5" />
@@ -1730,6 +1708,138 @@ WHERE CustomerKey = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[InsertOutput]"
+          TopLeft="364,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-254,59.5"
+              Start="0,0"
+              End="-254,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.75"
+                    Point2="0,29.75"
+                    Point3="-4,29.75" />
+                  <mssgle:LineSegment
+                    End="-250,29.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-250,29.75"
+                    Point2="-254,29.75"
+                    Point3="-254,33.75" />
+                  <mssgle:LineSegment
+                    End="-254,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-155.97798828125,34.75,57.9559765625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[DeleteOutput]"
+          TopLeft="396,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="219,59.5"
+              Start="0,0"
+              End="219,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5961538461538" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5961538461538"
+                    Point2="0,20.5961538461538"
+                    Point3="4,20.5961538461538" />
+                  <mssgle:LineSegment
+                    End="215,20.5961538461538" />
+                  <mssgle:CubicBezierSegment
+                    Point1="215,20.5961538461538"
+                    Point2="219,20.5961538461538"
+                    Point3="219,24.5961538461538" />
+                  <mssgle:LineSegment
+                    End="219,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="79.55361328125,25.5961538461538,59.8927734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[Data Conversion Output]"
+          TopLeft="366.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.5"
+              Start="0,0"
+              End="0,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[UpdateOutput]"
+          TopLeft="385.333333333333,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.3333333333333,59.5"
+              Start="0,0"
+              End="-17.3333333333333,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2151162790698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2151162790698"
+                    Point2="0,24.2151162790698"
+                    Point3="-4,24.2151162790698" />
+                  <mssgle:LineSegment
+                    End="-13.3333333333333,24.2151162790698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.3333333333333,24.2151162790698"
+                    Point2="-17.3333333333333,24.2151162790698"
+                    Point3="-17.3333333333333,28.2151162790698" />
+                  <mssgle:LineSegment
+                    End="-17.3333333333333,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-40.2969986979167,29.2151162790698,63.2606640625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[Output]"
           TopLeft="368,47.5">
           <EdgeLayout.Curve>
@@ -1748,7 +1858,9 @@ WHERE CustomerKey = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1808,140 +1920,6 @@ WHERE CustomerKey = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-59.19138671875,35,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Data Flow Task - Incremental Load DimCsutomer\CDC Splitter"
-          TopLeft="296,312" />
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[Data Conversion Output]"
-          TopLeft="366.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
-              Start="0,0"
-              End="0,53">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[InsertOutput]"
-          TopLeft="364,354">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-254,59.5"
-              Start="0,0"
-              End="-254,52">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.75"
-                    Point2="0,29.75"
-                    Point3="-4,29.75" />
-                  <mssgle:LineSegment
-                    End="-250,29.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-250,29.75"
-                    Point2="-254,29.75"
-                    Point3="-254,33.75" />
-                  <mssgle:LineSegment
-                    End="-254,52" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-155.97798828125,34.75,57.9559765625,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[UpdateOutput]"
-          TopLeft="385.333333333333,354">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-17.3333333333333,59.5"
-              Start="0,0"
-              End="-17.3333333333333,52">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2151162790698" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2151162790698"
-                    Point2="0,24.2151162790698"
-                    Point3="-4,24.2151162790698" />
-                  <mssgle:LineSegment
-                    End="-13.3333333333333,24.2151162790698" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-13.3333333333333,24.2151162790698"
-                    Point2="-17.3333333333333,24.2151162790698"
-                    Point3="-17.3333333333333,28.2151162790698" />
-                  <mssgle:LineSegment
-                    End="-17.3333333333333,52" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-40.2969986979167,29.2151162790698,63.2606640625,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load DimCsutomer.Paths[DeleteOutput]"
-          TopLeft="396,354">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="219,59.5"
-              Start="0,0"
-              End="219,52">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5961538461538" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5961538461538"
-                    Point2="0,20.5961538461538"
-                    Point3="4,20.5961538461538" />
-                  <mssgle:LineSegment
-                    End="215,20.5961538461538" />
-                  <mssgle:CubicBezierSegment
-                    Point1="215,20.5961538461538"
-                    Point2="219,20.5961538461538"
-                    Point3="219,24.5961538461538" />
-                  <mssgle:LineSegment
-                    End="219,52" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="79.55361328125,25.5961538461538,59.8927734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

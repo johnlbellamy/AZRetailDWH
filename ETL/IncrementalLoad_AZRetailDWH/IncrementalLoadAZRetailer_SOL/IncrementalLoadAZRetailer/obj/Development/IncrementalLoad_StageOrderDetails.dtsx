@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_StageOrderDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{0803EF98-8A27-4001-9EC7-3CE34A8E8AEA}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{46A09424-FCB3-430A-91BE-E3202A93016E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
