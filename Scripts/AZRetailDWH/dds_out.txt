@@ -42,3 +42,107 @@ Changed database context to 'AZRetailDWH'.
 Changed database context to 'AZRetailDWH'.
 Changed database context to 'master'.
 Changed database context to 'AZRetailDWHLog'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWHLog'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWHLog'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimCustomer' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Msg 1940, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index on view '_vwDimCustomer'. It does not have a unique clustered index.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimLocation' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimProduct' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimStore' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimTime' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwFactOrders' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWHLog'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimCustomer' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Msg 1940, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index on view '_vwDimCustomer'. It does not have a unique clustered index.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimLocation' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimProduct' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimStore' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimTime' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwFactOrders' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWHLog'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimCustomer' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Msg 1940, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index on view '_vwDimCustomer'. It does not have a unique clustered index.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimLocation' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimProduct' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimStore' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwDimTime' was created with the following SET options off: 'QUOTED_IDENTIFIER'.
+Changed database context to 'AZRetailDWH'.
+Msg 1935, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 2
+Cannot create index. Object '_vwFactOrders' was created with the following SET options off: 'QUOTED_IDENTIFIER'.

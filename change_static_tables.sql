@@ -2,8 +2,8 @@ USE AZRetailOLTP
 GO
 
 UPDATE dbo.Store
-SET description = 'PHOENIX NORTH'
-WHERE StoreID = 112
+SET description = 'PHOENIX SUR'
+WHERE StoreID = 115
 
 -- Change Product with Code 5's name to Monkey Wrench
 UPDATE dbo.Product
@@ -56,7 +56,7 @@ VALUES
     GETDATE(), -- OrderDate - datetime
     NULL, -- ShipDate - datetime
     GETDATE(), -- DateLastContact - datetime
-    111          -- StoreNumber - int
+    115          -- StoreNumber - int
     )
 -- Update OrderDetails with new order
 
@@ -73,8 +73,8 @@ VALUES
 	(   72905,    -- OrderID - int
 	    1,    -- LINENO - smallint
 	    5,    -- ProductNumber - int
-	    444.7127, -- Price - smallmoney
-	    533.6552, -- Cost - smallmoney
+	    533.6552, -- Price - smallmoney
+	    444.7127, -- Cost - smallmoney
 	    5     -- Quantity - int
 	)
 
