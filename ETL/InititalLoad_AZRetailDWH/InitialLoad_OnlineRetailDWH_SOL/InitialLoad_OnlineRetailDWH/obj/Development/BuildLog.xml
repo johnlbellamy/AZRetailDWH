@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>InitialLoad_AZRetailDWH</Name>
-    <LastWriteTime>2018-08-22T23:05:51.0712649Z</LastWriteTime>
+    <LastWriteTime>2018-09-03T17:27:48.4842998Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -33,7 +33,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Load_FactOrders.dtsx</Name>
-      <LastWriteTime>2018-08-22T23:19:54.0940169Z</LastWriteTime>
+      <LastWriteTime>2018-09-03T17:48:53.5630793Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>

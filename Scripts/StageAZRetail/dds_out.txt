@@ -64,3 +64,27 @@ Job 'cdc.AZRetailOLTP_cleanup' started successfully.
 Changed database context to 'master'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Job 'cdc.AZRetailOLTP_capture' started successfully.
+Job 'cdc.AZRetailOLTP_cleanup' started successfully.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Job 'cdc.AZRetailOLTP_capture' started successfully.
+Job 'cdc.AZRetailOLTP_cleanup' started successfully.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Job 'cdc.AZRetailOLTP_capture' started successfully.
+Job 'cdc.AZRetailOLTP_cleanup' started successfully.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Job 'cdc.AZRetailOLTP_capture' started successfully.
+Job 'cdc.AZRetailOLTP_cleanup' started successfully.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.

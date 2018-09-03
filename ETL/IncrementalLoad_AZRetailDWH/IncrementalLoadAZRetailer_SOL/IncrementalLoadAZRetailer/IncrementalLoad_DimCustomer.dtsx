@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_DimCustomer"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{DA6F072D-8C59-4525-B558-53A3227F105D}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{282DA19B-49F5-40FD-B8C0-84A2706442BA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1586,18 +1586,18 @@ WHERE CustomerKey = ?</property>
         <NodeLayout
           Size="278,42"
           Id="Package\CDC Control Task -  Get Processing Range"
-          TopLeft="22,107.5" />
+          TopLeft="22,5.5" />
         <NodeLayout
           Size="270,42"
           Id="Package\CDC Control Task - Set Processed Range"
-          TopLeft="26.0000000000001,311.5" />
+          TopLeft="26,209.5" />
         <NodeLayout
           Size="311,42"
           Id="Package\Data Flow Task - Incremental Load DimCsutomer"
-          TopLeft="5.50000000000003,209.5" />
+          TopLeft="5.5,107.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="161,251.5">
+          TopLeft="161,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1619,7 +1619,7 @@ WHERE CustomerKey = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="161,149.5">
+          TopLeft="161,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1798,9 +1798,7 @@ WHERE CustomerKey = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1858,9 +1856,7 @@ WHERE CustomerKey = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
