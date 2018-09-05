@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_AZRetailDWH"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{ED841215-C86F-44E3-AF81-52927D2C07F4}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{5F732189-645A-495C-8EE0-E6FD053ACD39}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -934,11 +934,11 @@
         <NodeLayout
           Size="257,42"
           Id="Package\Execute Package Task - DimCustomer"
-          TopLeft="16.5,413.5" />
+          TopLeft="16.5000000000001,413.5" />
         <NodeLayout
           Size="252,42"
           Id="Package\Execute Package Task - DimLocation"
-          TopLeft="19,311.5" />
+          TopLeft="19.0000000000001,311.5" />
         <NodeLayout
           Size="248,42"
           Id="Package\Execute Package Task - DimProduct"
@@ -958,7 +958,7 @@
         <NodeLayout
           Size="279,42"
           Id="Package\Execute Package Task - StageOrderDetails"
-          TopLeft="5.50000000000006,617.5" />
+          TopLeft="5.50000000000009,617.5" />
         <NodeLayout
           Size="252,42"
           Id="Package\Execute Package Task - StageOrders"

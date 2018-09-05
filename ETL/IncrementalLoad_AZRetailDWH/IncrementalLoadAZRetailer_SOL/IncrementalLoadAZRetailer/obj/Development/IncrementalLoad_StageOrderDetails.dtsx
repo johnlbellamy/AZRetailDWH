@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_StageOrderDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{46A09424-FCB3-430A-91BE-E3202A93016E}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{53F686B7-9EEC-45A5-917E-BEF7FA4AA1B5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -197,26 +197,6 @@
                       name="ProductNumber"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Price]"
-                      dataType="numeric"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Price]"
-                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Price]"
-                      name="Price"
-                      precision="20"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Cost]"
-                      dataType="numeric"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Cost]"
-                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Cost]"
-                      name="Cost"
-                      precision="20"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Quantity]"
                       dataType="i4"
                       errorRowDisposition="FailComponent"
@@ -261,18 +241,6 @@
                       refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[ProductNumber]"
                       dataType="i4"
                       name="ProductNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Price]"
-                      dataType="numeric"
-                      name="Price"
-                      precision="20"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Cost]"
-                      dataType="numeric"
-                      name="Cost"
-                      precision="20"
-                      scale="10" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].ExternalColumns[Quantity]"
                       dataType="i4"
@@ -333,20 +301,6 @@
                       lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[ProductNumber]"
                       name="ProductNumber" />
                     <outputColumn
-                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Price]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Price]"
-                      name="Price"
-                      precision="20"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Cost]"
-                      dataType="numeric"
-                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Cost]"
-                      name="Cost"
-                      precision="20"
-                      scale="10" />
-                    <outputColumn
                       refId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Quantity]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[Quantity]"
@@ -356,6 +310,177 @@
                       dataType="i4"
                       lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
                       name="__$command_id" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup - Product Price and Cost"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Product]) [refTable]
+where [refTable].[ProductCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="description" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Category" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Cost" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[ProductNumber]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Connections[OleDbConnection]"
+                  connectionManagerID="{702884EC-100E-489C-B1CE-22DCB69CA3B1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Inputs[Lookup Input].Columns[ProductNumber]"
+                      cachedDataType="i4"
+                      cachedName="ProductNumber"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[ProductNumber]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProductCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output].Columns[Cost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output].Columns[Cost]"
+                      name="Cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Cost</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output].Columns[Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output].Columns[Price]"
+                      name="Price"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Price</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -453,20 +578,16 @@
                       lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[ProductNumber]" />
                     <inputColumn
                       refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Price]"
-                      cachedDataType="numeric"
+                      cachedDataType="cy"
                       cachedName="Price"
-                      cachedPrecision="20"
-                      cachedScale="10"
                       externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Price]" />
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output].Columns[Price]" />
                     <inputColumn
                       refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cost]"
-                      cachedDataType="numeric"
+                      cachedDataType="cy"
                       cachedName="Cost"
-                      cachedPrecision="20"
-                      cachedScale="10"
                       externalMetadataColumnId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
-                      lineageId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output].Columns[Cost]" />
+                      lineageId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output].Columns[Cost]" />
                     <inputColumn
                       refId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quantity]"
                       cachedDataType="i4"
@@ -531,8 +652,13 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task - Load StageOrderDetails.Paths[Output]"
+              refId="Package\Data Flow Task - Load StageOrderDetails.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Load StageOrderDetails.Paths[Output]"
+              endId="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost.Inputs[Lookup Input]"
               name="Output"
               startId="Package\Data Flow Task - Load StageOrderDetails\CDC Source.Outputs[Output]" />
           </paths>
@@ -685,35 +811,63 @@
     design-time-name="Package\Data Flow Task - Load StageOrderDetails">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination"
-          TopLeft="68,107" />
+          TopLeft="35,209.5" />
         <NodeLayout
           Size="134,42"
           Id="Package\Data Flow Task - Load StageOrderDetails\CDC Source"
-          TopLeft="91,23" />
+          TopLeft="53.5,5.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost"
+          TopLeft="5.50000000000003,107.5" />
         <EdgeLayout
           Id="Package\Data Flow Task - Load StageOrderDetails.Paths[Output]"
-          TopLeft="155.75,65">
+          TopLeft="120.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,34.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Load StageOrderDetails.Paths[Lookup Match Output]"
+          TopLeft="120.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -737,6 +891,29 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Product]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

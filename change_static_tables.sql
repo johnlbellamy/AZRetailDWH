@@ -65,16 +65,13 @@ VALUES
 	    OrderID,
 	    [LINENO],
 	    ProductNumber,
-	    Price,
-	    Cost,
+	
 	    Quantity
 	)
 	VALUES
 	(   72905,    -- OrderID - int
 	    1,    -- LINENO - smallint
 	    5,    -- ProductNumber - int
-	    533.6552, -- Price - smallmoney
-	    444.7127, -- Cost - smallmoney
 	    5     -- Quantity - int
 	)
 

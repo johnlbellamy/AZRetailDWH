@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>IncrementalLoadAZRetailer</Name>
-    <LastWriteTime>2018-08-22T22:23:25.9454676Z</LastWriteTime>
+    <LastWriteTime>2018-09-05T23:37:51.2482706Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -38,7 +38,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_StageOrderDetails.dtsx</Name>
-      <LastWriteTime>2018-08-22T23:44:45.7445851Z</LastWriteTime>
+      <LastWriteTime>2018-09-05T23:32:00.3768241Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -48,7 +48,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_AZRetailDWH.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9484704Z</LastWriteTime>
+      <LastWriteTime>2018-09-05T23:27:39.4949491Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -665,6 +665,14 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Minimum",
+            "expression": " 0"
+          },
+          {
+            "name": "Target",
+            "expression": "500000000"
           }
         ],
         "annotations": [

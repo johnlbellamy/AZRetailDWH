@@ -4,6 +4,8 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
+        <ServerName />
+        <PathOnServer />
         <StartObjectID>IncrementalLoad_AZRetailDWH.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />

@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-JFROBKA</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzJ7FbGLXQUWL36uverKWjgAAAAACAAAAAAAQZgAAAAEAACAAAACcYZ8zNZma6iVxcQPolIA4A3xLBef8VpNYWJFofvbKGwAAAAAOgAAAAAIAACAAAAAY2DPMVa2k2rGVrIhddGXtmUcMCbluP+mYY1O1+XT4EJAAAACbfqsJpkCjPKI+nEIOE362azoqd7KP2iuC0aXxdXQySWwMuOQ/8VrMA43u9vK2UKDpHlAbL4/Etk+Xjw1XFYqQxVYN1LO6qKmClb5FHSLVaITwf5OiDVBgGmd4k46n+IkYLRb/YeHktGJSZVSoYRA3HOQn+A8SwXVwwKlZPb6qPFCSOzxU2HrD16D7DF9MTpFAAAAAHf+KcVq+B0pRxBv5G3LTkY2tRJwry30awZ3bdd+SePVNKwSsoOohDhgUsBJzHvtbOf+jchfZSSH6DDs5q7DS4Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATxMuUiCm/06it3mpu1+/IAAAAAACAAAAAAAQZgAAAAEAACAAAAA02xIDFiwlwzgMr94uwQBbUtO7PVTJ0ep8872J89A+KAAAAAAOgAAAAAIAACAAAACB4LcG2zln2KsZphgXMIbESiLL3QsfPQv6qNqXIgLoopAAAAAtnAbgn5VFQ4T8eiWaM94jag0E4OhuDSlYmL6a779IEJeyTNyOesElH7zCk2Y8oF3ZZRQwlU1mAIQJNuWAU4c3fk9X0SZiOmlZLNGJ00JyWvyH9gMK/X5J1mAKAOClZSjN7RQ5YXb+15XMXmyMNLazq8+7ujcU2ta4H/OLXTVuvLwk3ITHr0YY4+lJ9nhZYRpAAAAAT1PKeGAsr1CWOiUn51gye+AYiObPATKDf/AOySDVqa76EJSK0heI2CTt2rT8IwksT6KNZ0KLHKrvcNIsX8r56g==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -39,6 +39,7 @@
           <SSIS:Package SSIS:Name="IncrementalLoad_StageOrderDetails.dtsx" SSIS:EntryPoint="0" />
           <SSIS:Package SSIS:Name="IncrementalLoad_FactOrders.dtsx" SSIS:EntryPoint="0" />
           <SSIS:Package SSIS:Name="IncrementalLoad_AZRetailDWH.dtsx" SSIS:EntryPoint="1" />
+      
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="DWH.conmgr" />
@@ -147,7 +148,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetail;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetailOLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -162,7 +163,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">AZRetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">AZRetailOLTP</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -323,7 +324,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetail;Integrated Security=True;Application Name=SSIS-IncrementalLoadAZRetailer-{A491B70A-C9AB-48C5-8641-5DFC7300E090}LocalHost.OnlineRetail1;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=AZRetailOLTP;Integrated Security=True;Application Name=SSIS-IncrementalLoadAZRetailer-{A491B70A-C9AB-48C5-8641-5DFC7300E090}LocalHost.OnlineRetail1;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -338,7 +339,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">AZRetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">AZRetailOLTP</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -408,10 +409,10 @@
                 <SSIS:Property SSIS:Name="Name">IncrementalLoad_DimStore</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{56C301EC-9B7D-4BF6-9286-61900D2C61E6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B95CC94F-6E9D-484B-8117-74D52DACE24D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -425,10 +426,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CC9C5046-AAD2-4570-97D5-9159AB33613F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1FDC1026-2CCD-4DFD-B4EB-0ED2EA505F43}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -442,10 +443,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9F75C89F-2D73-427F-BDC6-B26536A13EF6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DC646417-D926-4268-80F5-327C1B6BABD1}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -476,10 +477,10 @@
                 <SSIS:Property SSIS:Name="Name">IncrementalLoad_DimCustomer</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B8FD3C86-87F7-4071-9651-FBFAAA2B3AEF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{282DA19B-49F5-40FD-B8C0-84A2706442BA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -493,10 +494,10 @@
                 <SSIS:Property SSIS:Name="Name">IncrementalLoad_StageOrders</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FBD653ED-71BE-4967-B7FA-E8EB37925E75}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7B9EBE91-C971-46FE-A79D-5D4BC97ACD26}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -510,10 +511,10 @@
                 <SSIS:Property SSIS:Name="Name">IncrementalLoad_StageOrderDetails</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FE1A1C50-4D2D-44F6-86FE-C70E7842D6D4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{46A09424-FCB3-430A-91BE-E3202A93016E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -527,10 +528,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">20</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2D1CA0D9-E851-4831-8EAF-4CBECF5B8B1A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D7D1AF93-A547-40A9-A6F0-35B468BA1F0F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -544,10 +545,10 @@
                 <SSIS:Property SSIS:Name="Name">IncrementalLoad_AZRetailDWH</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9B76820E-A32F-47EB-948E-67DEFC61E040}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A09229CC-C253-416B-AE50-C3F0A665DC87}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -644,6 +645,7 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+          
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
