@@ -1,9 +1,6 @@
 
 # AZRetailDWH
-An OLTP to OLAP warehouse implementation in SQL Server and SSAS
-
-# Note:
-This is still a work in progress. More updates, a Mapping document, diagrams, and usage pdf coming soon.
+An OLTP to OLAP warehouse implementation in SQL Server and SSAS. For a complete description, see my site: http://www.jlbdatasci.com/jobs/lbdwi/
 
 # Requirements: 
 1) Visual Studio 2017 with SSDT installed on server.
