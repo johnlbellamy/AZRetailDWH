@@ -14,7 +14,7 @@ This is still a work in progress. More updates, a Mapping document, diagrams, an
 
 # Get Files and Restore OLTP database
 1) Download and unzip files. 
-2) Download OLTP .bak file from: https://drive.google.com/file/d/1EucT4QoOGL6RZJSNyC3v9DvBnM5HrRZ2/view?usp=sharing
+2) Download OLTP .bak file from: https://drive.google.com/open?id=1pWFTv9mLn7riFC9-PIQv_e3i3e77NmDq
 Unzip this file and place in the backup directory of your server. Then click on the root folder in the database and select "Restore Database from Backup".  DO NOT CHANGE THE NAME OF THIS DATABASE.
 
 # Create warehouse and stage databases
