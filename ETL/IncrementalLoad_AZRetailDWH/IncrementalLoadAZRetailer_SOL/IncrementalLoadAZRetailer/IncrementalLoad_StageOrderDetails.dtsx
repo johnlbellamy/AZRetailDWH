@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_StageOrderDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{53F686B7-9EEC-45A5-917E-BEF7FA4AA1B5}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{7FA2ABFD-162B-4761-9EB9-4E7B253D0809}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -817,13 +817,13 @@ where [refTable].[ProductCode] = ?</property>
           Id="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination"
           TopLeft="35,209.5" />
         <NodeLayout
-          Size="134,42"
-          Id="Package\Data Flow Task - Load StageOrderDetails\CDC Source"
-          TopLeft="53.5,5.5" />
-        <NodeLayout
           Size="230,42"
           Id="Package\Data Flow Task - Load StageOrderDetails\Lookup - Product Price and Cost"
           TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task - Load StageOrderDetails\CDC Source"
+          TopLeft="53.5,5.5" />
         <EdgeLayout
           Id="Package\Data Flow Task - Load StageOrderDetails.Paths[Output]"
           TopLeft="120.5,47.5">
@@ -874,14 +874,6 @@ where [refTable].[ProductCode] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Load StageOrderDetails\CDC Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task - Load StageOrderDetails\OLE DB Destination">
     <Properties>
       <Property>
@@ -912,6 +904,14 @@ where [refTable].[ProductCode] = ?</property>
         <Value
           type="q4:int">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Load StageOrderDetails\CDC Source">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
