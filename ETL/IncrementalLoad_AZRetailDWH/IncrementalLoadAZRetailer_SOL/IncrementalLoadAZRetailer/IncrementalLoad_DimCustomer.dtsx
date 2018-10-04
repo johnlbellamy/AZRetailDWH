@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="IncrementalLoad_DimCustomer"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{C750829D-36D4-445A-8DDE-F9B626F84537}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{9FACCBD3-72C0-4440-AE86-E2E4BC814FF1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1881,6 +1881,24 @@ WHERE CustomerKey = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task - Truncate StageCustomer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{750830E0-02E8-4DAA-8CCC-71A586F0C878}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task - Truncate StageCustomer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4758A7E6-39FA-4885-BD95-E7D2A1982167}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE StageCustomer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -1907,6 +1925,14 @@ WHERE CustomerKey = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Data Flow Task - Incremental Load DimCustomer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{35927303-B201-415C-ACB8-4677596D97C9}"
+      DTS:From="Package\Execute SQL Task - Truncate StageCustomer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\CDC Control Task -  Get Processing Range" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1919,22 +1945,30 @@ WHERE CustomerKey = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="278,42"
           Id="Package\CDC Control Task -  Get Processing Range"
-          TopLeft="22,5.5" />
+          TopLeft="22,107.5" />
         <NodeLayout
           Size="270,42"
           Id="Package\CDC Control Task - Set Processed Range"
-          TopLeft="26.0000000000001,311.5" />
+          TopLeft="26.0000000000001,413.5" />
         <NodeLayout
           Size="311,42"
           Id="Package\Data Flow Task - Incremental Load DimCustomer"
-          TopLeft="5.50000000000003,209.5" />
+          TopLeft="5.50000000000003,311.5" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\Data Flow Task - Load StageCustomer"
+          TopLeft="31.5,209.5" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\Execute SQL Task - Truncate StageCustomer"
+          TopLeft="16,5.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="161,251.5">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="161,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1954,13 +1988,9 @@ WHERE CustomerKey = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="259,42"
-          Id="Package\Data Flow Task - Load StageCustomer"
-          TopLeft="31.5,107.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="161,47.5">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="161,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1982,7 +2012,29 @@ WHERE CustomerKey = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="161,149.5">
+          TopLeft="161,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="161,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2409,7 +2461,7 @@ WHERE CustomerKey = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Load StageCustomer\OLE DB Source">
+    design-time-name="Package\Data Flow Task - Load StageCustomer\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2422,7 +2474,7 @@ WHERE CustomerKey = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Load StageCustomer\OLE DB Destination">
+    design-time-name="Package\Data Flow Task - Load StageCustomer\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

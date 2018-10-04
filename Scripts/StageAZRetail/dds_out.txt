@@ -149,3 +149,20 @@ Changed database context to 'master'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Msg 2714, Level 16, State 6, Server DESKTOP-2Q06RAJ, Line 32
+There is already an object named 'cdc_Order_states' in the database.
+Msg 1913, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+The operation failed because an index or statistics with name 'cdc_states_name' already exists on table 'dbo.cdc_Order_states'.
+Msg 2714, Level 16, State 6, Server DESKTOP-2Q06RAJ, Line 2
+There is already an object named 'cdc_Customer_states' in the database.
+Msg 1913, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+The operation failed because an index or statistics with name 'cdc_states_name' already exists on table 'dbo.cdc_Customer_states'.
+Msg 2714, Level 16, State 6, Server DESKTOP-2Q06RAJ, Line 2
+There is already an object named 'cdc_OrderDetails_states' in the database.
+Msg 1913, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+The operation failed because an index or statistics with name 'cdc_states_name' already exists on table 'dbo.cdc_OrderDetails_states'.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.

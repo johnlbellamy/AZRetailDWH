@@ -1,4 +1,3 @@
-
 USE [AZRetailDWH]
 GO
 
@@ -6,7 +5,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_create_new_dim_time_row]
-
 AS
 
 DECLARE @iter DATETIME

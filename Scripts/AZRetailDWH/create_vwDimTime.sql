@@ -33,7 +33,7 @@ DROP INDEX _vwDimTime.DimStore_TimeKey
 GO
 
 CREATE UNIQUE CLUSTERED INDEX _vwDimTime_TimeKey
- ON _vwDimTime(TimeKey)
+ON _vwDimTime(TimeKey)
 
 GO
 
