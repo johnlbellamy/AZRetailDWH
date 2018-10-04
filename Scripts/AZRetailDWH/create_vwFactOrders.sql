@@ -5,6 +5,11 @@ IF OBJECT_ID('_vwFactOrders', 'view') IS NOT NULL
 DROP VIEW _vwFactOrders ;
 GO
 
+SET NUMERIC_ROUNDABORT OFF;
+SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT,
+    QUOTED_IDENTIFIER, ANSI_NULLS ON;
+GO
+
 CREATE VIEW _vwFactOrders
 WITH SCHEMABINDING
 AS
@@ -13,6 +18,7 @@ AS
       ,[ShipDateKey]
       ,[StoreKey]
       ,[ProductKey]
+	  ,[LocationKey] 
       ,[OrderID]
       ,[LineNumber]
       ,[LineSale]
@@ -30,5 +36,5 @@ DROP INDEX _vwFactOrders.DimStore_Orders
 GO
 
 CREATE UNIQUE CLUSTERED INDEX _vwFactOrders_Orders
-ON _vwFactOrders(CustomerKey, SalesDateKey, StoreKey, OrderID, LineNumber)
+ON _vwFactOrders(CustomerKey, SalesDateKey, StoreKey, LocationKey, OrderID, LineNumber)
 GO

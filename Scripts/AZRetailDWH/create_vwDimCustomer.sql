@@ -5,6 +5,11 @@ IF OBJECT_ID('_vwDimCustomer', 'view') IS NOT NULL
 DROP VIEW _vwDimCustomer ;
 GO
 
+SET NUMERIC_ROUNDABORT OFF;
+SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT,
+    QUOTED_IDENTIFIER, ANSI_NULLS ON;
+GO
+
 CREATE VIEW _vwDimCustomer
 WITH SCHEMABINDING
 AS
@@ -12,7 +17,6 @@ AS
       ,[CustomerID]
       ,[FirstName]
       ,[LastName]
-      ,[LocationKey]
       ,[IsDeleted] FROM [dbo].[DimCustomer]
 GO
 
@@ -28,13 +32,3 @@ CREATE UNIQUE CLUSTERED INDEX _vwDimCustomer_CustomerKey
 
 GO
 
-IF EXISTS
-  (SELECT * FROM sys.indexes 
-   WHERE name = '_vwDimCustomer_LocationKey'
-   AND object_id = object_id('_vwDimCustomer_Locationkey'))
-DROP INDEX _vwDimCustomer.DimCustomer_locationKey
-GO
-
-CREATE INDEX _vwDimCustomer_LocationKey_Key
-  on _vwDimCustomer(LocationKey)
-GO

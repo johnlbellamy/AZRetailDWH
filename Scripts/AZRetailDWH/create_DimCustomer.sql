@@ -13,18 +13,11 @@ CREATE TABLE DimCustomer(
     ,CustomerID INT	NOT NULL
 	,FirstName VARCHAR(50) NOT NULL
 	,LastName VARCHAR(50) NOT NULL
-	,LocationKey int NOT NULL
 	,IsDeleted BIT DEFAULT 0 NOT NULL
-    
-	Constraint fk_DimCustomer_LocationKey
-    FOREIGN key (LocationKey)
-    REFERENCES DimLocation(LocationKey)
 	PRIMARY KEY CLUSTERED(CustomerKey)
 )
 
 GO
-
-
 -- Build indexes
 
 IF EXISTS
@@ -37,12 +30,4 @@ GO
 CREATE UNIQUE INDEX DimCustomer_CustomerKey
  ON DimCustomer(CustomerKey)
 
-GO
-
-CREATE INDEX DimCustomer_LocationKey_Key
-  on DimCustomer(LocationKey)
-GO
-
-ALTER TABLE DimCustomer
-NOCHECK CONSTRAINT fk_DimCustomer_LocationKey
 GO

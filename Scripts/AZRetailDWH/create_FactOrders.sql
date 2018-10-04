@@ -14,6 +14,7 @@ CREATE TABLE FactOrders(
 	,ShipDateKey INT 
 	,StoreKey INT NOT NULL
 	,ProductKey INT NOT NULL
+	,LocationKey INT NOT NULL
     ,OrderID INT NOT NULL
     ,LineNumber SMALLINT NOT NULL	
 	,LineSale MONEY NOT NULL
@@ -22,7 +23,7 @@ CREATE TABLE FactOrders(
 	,IsDeleted BIT NOT NULL DEFAULT 0
 	
 	,CONSTRAINT pk_FactOrders
-     PRIMARY KEY CLUSTERED (CustomerKey, SalesDateKey, StoreKey, ProductKey, OrderID, LineNumber)
+     PRIMARY KEY CLUSTERED (CustomerKey, SalesDateKey, StoreKey, ProductKey, LocationKey, OrderID, LineNumber)
 	 
 	 ,Constraint fk_FactOrders_StoreKey
      FOREIGN key (StoreKey)
@@ -40,6 +41,10 @@ CREATE TABLE FactOrders(
      FOREIGN key (SalesDateKey)
      REFERENCES DimTime(TimeKey)
 	 
+	 ,Constraint fk_FactOrders_LocationKey
+     FOREIGN key (LocationKey)
+     REFERENCES DimLocation(LocationKey)
+	 
 	 ,Constraint fk_FactOrders_ShipDateKey
      FOREIGN key (ShipDateKey)
      REFERENCES DimTime(TimeKey)
@@ -50,11 +55,9 @@ GO
 
 CREATE COLUMNSTORE INDEX idx_fact_orders
 
-ON FactOrders (CustomerKey, SalesDateKey, StoreKey, ProductKey, OrderID, LineNumber)
+ON FactOrders (CustomerKey, SalesDateKey, StoreKey, ProductKey, LocationKey, OrderID, LineNumber)
 
-
-
-go
+GO
 
 ALTER TABLE dbo.FactOrders
 NOCHECK CONSTRAINT fk_FactOrders_CustomerKey
@@ -70,6 +73,10 @@ NOCHECK CONSTRAINT fk_FactOrders_ShipDateKey
 
 ALTER TABLE dbo.FactOrders
 NOCHECK CONSTRAINT fk_FactOrders_StoreKey
+GO
+
+ALTER TABLE dbo.FactOrders
+NOCHECK CONSTRAINT fk_FactOrders_LocationKey
 GO
 
 ALTER TABLE dbo.FactOrders
