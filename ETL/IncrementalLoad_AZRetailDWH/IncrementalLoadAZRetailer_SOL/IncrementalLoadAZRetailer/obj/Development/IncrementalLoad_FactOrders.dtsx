@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{D7B02ABA-6CB8-4BE6-8A14-8FCEEA569E65}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{D2641EE4-D930-4EAF-8DBB-F0AE23BED001}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1234,6 +1234,20 @@ where [refTable].[OrderID] = ?</property>
                           name="CopyFromReferenceColumn">CustomerKey</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output].Columns[LocationKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output].Columns[LocationKey]"
+                      name="LocationKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LocationKey</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2103,20 +2117,19 @@ WHERE
                       cachedDataType="i4"
                       cachedName="LocationKey"
                       externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey.Outputs[Lookup Match Output].Columns[LocationKey]" />
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output].Columns[LocationKey]" />
                     <inputColumn
                       refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input].Columns[OrderID]"
                       cachedDataType="i4"
                       cachedName="OrderID"
-                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
-                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[OrderID]" />
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output].Columns[OrderID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input].Columns[LINENO]"
+                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input].Columns[LineNumber]"
                       cachedDataType="i2"
-                      cachedName="LINENO"
+                      cachedName="LineNumber"
                       externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
-                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[LINENO]" />
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output].Columns[LineNumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2368,24 +2381,6 @@ WHERE
                       externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
                       lineageId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Product key.Outputs[Lookup Match Output].Columns[ProductKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderTimeKey]"
-                      cachedDataType="i4"
-                      cachedName="OrderTimeKey"
-                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesDateKey]"
-                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[OrderTimeKey]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShipTimeKey]"
-                      cachedDataType="i4"
-                      cachedName="ShipTimeKey"
-                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipDateKey]"
-                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[ShipTimeKey]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Lookup - Store Key.StoreKey]"
-                      cachedDataType="i4"
-                      cachedName="Lookup - Store Key.StoreKey"
-                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
-                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[Lookup - Store Key.StoreKey]" />
-                    <inputColumn
                       refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LINENO]"
                       cachedDataType="i2"
                       cachedName="LINENO"
@@ -2413,6 +2408,24 @@ WHERE
                       cachedName="QuantitySold"
                       externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
                       lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[QuantitySold]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Lookup - Store Key.StoreKey]"
+                      cachedDataType="i4"
+                      cachedName="Lookup - Store Key.StoreKey"
+                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[Lookup - Store Key.StoreKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShipTimeKey]"
+                      cachedDataType="i4"
+                      cachedName="ShipTimeKey"
+                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipDateKey]"
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[ShipTimeKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderTimeKey]"
+                      cachedDataType="i4"
+                      cachedName="OrderTimeKey"
+                      externalMetadataColumnId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesDateKey]"
+                      lineageId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Outputs[Merge Join Output].Columns[OrderTimeKey]" />
                     <inputColumn
                       refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationKey]"
                       cachedDataType="i4"
@@ -2443,6 +2456,10 @@ WHERE
                       dataType="i4"
                       name="ProductKey" />
                     <externalMetadataColumn
+                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationKey]"
+                      dataType="i4"
+                      name="LocationKey" />
+                    <externalMetadataColumn
                       refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
                       dataType="i4"
                       name="OrderID" />
@@ -2466,10 +2483,6 @@ WHERE
                       refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
                       dataType="bool"
                       name="IsDeleted" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationKey]"
-                      dataType="i4"
-                      name="LocationKey" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3928,39 +3941,39 @@ WHERE
               startId="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Calculate Profit and Cost.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output8]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\Union All.Inputs[Union All Input 3]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Ship Date key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output6]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Ship Date key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Order Date Keys.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output5]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output4]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Calculate Profit and Cost.Inputs[Derived Column Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output7]"
               endId="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Get Stringdates.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - CustomerKey.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output2]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey.Inputs[Lookup Input]"
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output6]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber.Outputs[Lookup Match Output]" />
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output1]"
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output5]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Calculate Profit and Cost.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output4]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\Union All.Inputs[Union All Input 3]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Ship Date key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output7]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Ship Date key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Order Date Keys.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output2]"
               endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get CustomerID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Product key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output1]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\Sort.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Store Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber.Inputs[Lookup Input]"
@@ -3968,9 +3981,9 @@ WHERE
               startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get CustomerID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output3]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\Sort.Inputs[Sort Input]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Store Key.Outputs[Lookup Match Output]" />
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup No Match Output]"
               endId="Package\Data Flow Task - Incremental Load FactOrders\Union All.Inputs[Union All Input 1]"
@@ -3998,14 +4011,14 @@ WHERE
               startId="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Source  OrderDetails.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Sort Output1]"
-              endId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task - Incremental Load FactOrders\Sort - OrderDetails.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Sort Output]"
               endId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Data Flow Task - Incremental Load FactOrders\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Sort Output]"
+              endId="Package\Data Flow Task - Incremental Load FactOrders\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task - Incremental Load FactOrders\Sort - OrderDetails.Outputs[Sort Output]" />
             <path
               refId="Package\Data Flow Task - Incremental Load FactOrders.Paths[Union All Output 1]"
               endId="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Store Key.Inputs[Lookup Input]"
@@ -4094,72 +4107,420 @@ WHERE
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="167,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Sort - OrderDetails"
-          TopLeft="318,731.3125" />
-        <NodeLayout
-          Size="286,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Union All"
-          TopLeft="5.50000000000009,523.9375" />
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - CustomerKey"
-          TopLeft="55.5,109.1875" />
+          Size="180,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey"
+          TopLeft="276,1249.75" />
         <NodeLayout
           Size="189,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Ship Date key"
-          TopLeft="54.0000000000001,420.25" />
+          TopLeft="271.5,420.25" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - CustomerKey"
+          TopLeft="273,109.1875" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get CustomerID"
+          TopLeft="266.5,1042.375" />
         <NodeLayout
           Size="98,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\Sort"
-          TopLeft="159.5,731.3125" />
-        <NodeLayout
-          Size="201,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Order Date Keys"
-          TopLeft="48.0000000000001,316.5625" />
-        <NodeLayout
-          Size="237,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Get Stringdates"
-          TopLeft="30.0000000000001,212.875" />
+          TopLeft="317,731.3125" />
         <NodeLayout
           Size="169,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Store Key"
-          TopLeft="64.0000000000001,627.625" />
+          TopLeft="281.5,627.625" />
         <NodeLayout
-          Size="192,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Source - Orders"
-          TopLeft="52.5,5.5" />
+          Size="201,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Order Date Keys"
+          TopLeft="265.5,316.5625" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber"
+          TopLeft="257,1146.0625" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Get Stringdates"
+          TopLeft="247.5,212.875" />
         <NodeLayout
           Size="215,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Source  OrderDetails"
-          TopLeft="294,627.625" />
+          TopLeft="5.50000000000011,627.625" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination"
-          TopLeft="87.0000000000002,1560.8125" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey"
-          TopLeft="317.5,1457.125" />
+          Size="192,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Source - Orders"
+          TopLeft="270,5.5" />
         <NodeLayout
           Size="166,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Command"
-          TopLeft="318.5,1560.8125" />
+          TopLeft="54.0000000000002,1560.8125" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - OrderKey"
+          TopLeft="282,1457.125" />
         <NodeLayout
           Size="130,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\Merge Join"
-          TopLeft="336.5,835" />
+          TopLeft="301,835" />
         <NodeLayout
           Size="179,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Product key"
-          TopLeft="312,938.6875" />
+          TopLeft="276.5,938.6875" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Sort - OrderDetails"
+          TopLeft="89.5000000000001,731.3125" />
         <NodeLayout
           Size="280,42"
           Id="Package\Data Flow Task - Incremental Load FactOrders\Derived Column - Calculate Profit and Cost"
-          TopLeft="261.5,1353.4375" />
+          TopLeft="226,1353.4375" />
+        <NodeLayout
+          Size="286,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\Union All"
+          TopLeft="223,523.9375" />
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[OLE DB Source Output]"
+          TopLeft="366,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Merge Join Output]"
+          TopLeft="366,877">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup No Match Output]"
+          TopLeft="366,462.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,21.2890625,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output]"
+          TopLeft="366,1084.375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output4]"
+          TopLeft="366,462.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output1]"
+          TopLeft="366,669.625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output2]"
+          TopLeft="366,980.6875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output3]"
+          TopLeft="366,1188.0625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output8]"
+          TopLeft="366,151.1875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output5]"
+          TopLeft="366,1291.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output6]"
+          TopLeft="339.333333333334,1499.125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202.333333333333,61.6875"
+              Start="0,0"
+              End="-202.333333333333,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0241745283019" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0241745283019"
+                    Point2="0,25.0241745283019"
+                    Point3="-4,25.0241745283019" />
+                  <mssgle:LineSegment
+                    End="-198.333333333333,25.0241745283019" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.333333333333,25.0241745283019"
+                    Point2="-202.333333333333,25.0241745283019"
+                    Point3="-202.333333333333,29.0241745283019" />
+                  <mssgle:LineSegment
+                    End="-202.333333333333,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-149.358053385417,30.0241745283019,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output7]"
+          TopLeft="366,358.5625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Derived Column Output1]"
+          TopLeft="366,1395.4375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Derived Column Output]"
+          TopLeft="366,254.875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6875"
+              Start="0,0"
+              End="0,54.1875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Union All Output 1]"
-          TopLeft="148.5,565.9375">
+          TopLeft="366,565.9375">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4181,7 +4542,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Sort Output1]"
-          TopLeft="401.5,773.3125">
+          TopLeft="366,773.3125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4215,7 +4576,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Sort Output]"
-          TopLeft="208.5,773.3125">
+          TopLeft="173,773.3125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4249,133 +4610,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[OLE DB Source Output1]"
-          TopLeft="401.5,669.625">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[OLE DB Source Output]"
-          TopLeft="148.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Merge Join Output]"
-          TopLeft="401.5,877">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup No Match Output1]"
-          TopLeft="374.833333333334,1499.125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-202.333333333333,61.6875"
-              Start="0,0"
-              End="-202.333333333333,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.0241745283019" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.0241745283019"
-                    Point2="0,25.0241745283019"
-                    Point3="-4,25.0241745283019" />
-                  <mssgle:LineSegment
-                    End="-198.333333333333,25.0241745283019" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-198.333333333333,25.0241745283019"
-                    Point2="-202.333333333333,25.0241745283019"
-                    Point3="-202.333333333333,29.0241745283019" />
-                  <mssgle:LineSegment
-                    End="-202.333333333333,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-156.973053385417,30.0241745283019,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup No Match Output]"
-          TopLeft="148.5,462.25">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,21.2890625,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output3]"
-          TopLeft="148.5,669.625">
+          TopLeft="113,669.625">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4404,38 +4639,16 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-18.19138671875,35.84375,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination"
+          TopLeft="280.5,1560.8125" />
         <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output8]"
-          TopLeft="148.5,462.25">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output5]"
-          TopLeft="428.166666666667,1499.125">
+          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup No Match Output1]"
+          TopLeft="392.666666666667,1499.125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4465,207 +4678,7 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-61.5247200520833,30.0241745283019,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output6]"
-          TopLeft="148.5,358.5625">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output7]"
-          TopLeft="148.5,151.1875">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Derived Column Output1]"
-          TopLeft="401.5,1395.4375">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Derived Column Output]"
-          TopLeft="148.5,254.875">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get CustomerID"
-          TopLeft="302,1042.375" />
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output1]"
-          TopLeft="401.5,980.6875">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="218,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber"
-          TopLeft="292.5,1146.0625" />
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output]"
-          TopLeft="401.5,1084.375">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey"
-          TopLeft="311.5,1249.75" />
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output2]"
-          TopLeft="401.5,1188.0625">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Incremental Load FactOrders.Paths[Lookup Match Output4]"
-          TopLeft="401.5,1291.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6875"
-              Start="0,0"
-              End="0,54.1875">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1875" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.2890625,96.3827734375,11.609375"
+              BoundingBox="-69.1397200520833,30.0241745283019,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4673,12 +4686,12 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - CustomerKey">
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">true</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4688,7 +4701,7 @@ WHERE
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4707,6 +4720,75 @@ WHERE
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[DimTime]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - CustomerKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get CustomerID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Store Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -4742,38 +4824,25 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Store Key">
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string"></Value>
+          type="q3:string">[dbo].[StageCustomer]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Source - Orders">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -4791,7 +4860,7 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination">
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Source - Orders">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4809,7 +4878,7 @@ WHERE
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4819,7 +4888,7 @@ WHERE
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4832,7 +4901,7 @@ WHERE
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4842,7 +4911,7 @@ WHERE
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4850,71 +4919,15 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get CustomerID">
+    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\OLE DB Destination">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - Get AddressNumber">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[StageCustomer]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task - Incremental Load FactOrders\Lookup - LocationKey">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

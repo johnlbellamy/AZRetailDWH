@@ -183,3 +183,38 @@ Changed database context to 'master'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
+Msg 911, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+Database 'AZRetailOLTP' does not exist. Make sure that the name is entered correctly.
+Msg 15109, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+Cannot change the owner of the master, model, tempdb or distribution database.
+Msg 22989, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_db_internal, Line 27
+Could not enable Change Data Capture for database 'master'. Change data capture is not supported on system databases, or on a distribution database.
+Msg 22901, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_table, Line 38
+The database 'master' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view.
+Msg 22901, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_table, Line 38
+The database 'master' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view.
+Msg 22901, Level 16, State 1, Server DESKTOP-2Q06RAJ, Procedure sys.sp_cdc_enable_table, Line 38
+The database 'master' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view.
+Msg 2714, Level 16, State 6, Server DESKTOP-2Q06RAJ, Line 32
+There is already an object named 'cdc_Order_states' in the database.
+Msg 1913, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+The operation failed because an index or statistics with name 'cdc_states_name' already exists on table 'dbo.cdc_Order_states'.
+Msg 2714, Level 16, State 6, Server DESKTOP-2Q06RAJ, Line 2
+There is already an object named 'cdc_Customer_states' in the database.
+Msg 1913, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+The operation failed because an index or statistics with name 'cdc_states_name' already exists on table 'dbo.cdc_Customer_states'.
+Msg 2714, Level 16, State 6, Server DESKTOP-2Q06RAJ, Line 2
+There is already an object named 'cdc_OrderDetails_states' in the database.
+Msg 1913, Level 16, State 1, Server DESKTOP-2Q06RAJ, Line 1
+The operation failed because an index or statistics with name 'cdc_states_name' already exists on table 'dbo.cdc_OrderDetails_states'.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Job 'cdc.AZRetailOLTP_capture' started successfully.
+Job 'cdc.AZRetailOLTP_cleanup' started successfully.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
