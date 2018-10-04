@@ -1,1 +1,18 @@
 
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'master'.
+Changed database context to 'AZRetailDWHLog'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.
+Changed database context to 'AZRetailDWH'.

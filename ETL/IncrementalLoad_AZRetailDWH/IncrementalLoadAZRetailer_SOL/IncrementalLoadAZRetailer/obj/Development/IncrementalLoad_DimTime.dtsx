@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{64922F0A-DCC8-4475-8F44-418D30868E6B}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{7347DAF7-1D73-4E7E-A725-4B61C89E4E97}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,7 +32,7 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{749CADBE-79EE-49D9-863B-FD49E155FDC4}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="EXEC [dbo].[sp_create_new_dim_time_row]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="&#xA;EXEC [dbo].[sp_create_new_dim_time_row]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>

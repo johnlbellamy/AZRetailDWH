@@ -142,3 +142,10 @@ The operation failed because an index or statistics with name 'cdc_states_name' 
 Changed database context to 'master'.
 Changed database context to 'StageAZRetail'.
 Changed database context to 'StageAZRetail'.
+Changed database context to 'AZRetailOLTP'.
+Job 'cdc.AZRetailOLTP_capture' started successfully.
+Job 'cdc.AZRetailOLTP_cleanup' started successfully.
+Changed database context to 'master'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.
+Changed database context to 'StageAZRetail'.

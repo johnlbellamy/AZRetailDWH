@@ -1,5 +1,4 @@
 USE [AZRetailDWH]
-
 GO
 
 IF EXISTS

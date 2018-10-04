@@ -2,53 +2,53 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>IncrementalLoadAZRetailer</Name>
-    <LastWriteTime>2018-09-05T23:37:51.2482706Z</LastWriteTime>
+    <LastWriteTime>2018-10-04T17:05:32.2670525Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_DimStore.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9574787Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T17:05:32.2735581Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_DimProduct.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9554768Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T17:05:32.2725572Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_DimLocation.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9534749Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T17:05:32.2715565Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_DimTime.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9594807Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T18:57:56.828438Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_DimCustomer.dtsx</Name>
-      <LastWriteTime>2018-09-03T01:02:07.86306Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T18:39:10.2637322Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_StageOrders.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9654858Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T17:05:32.2775613Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_StageOrderDetails.dtsx</Name>
-      <LastWriteTime>2018-09-05T23:32:00.3768241Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T17:05:32.2765601Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_FactOrders.dtsx</Name>
-      <LastWriteTime>2018-08-22T22:23:25.9624839Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T18:53:35.2003975Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>IncrementalLoad_AZRetailDWH.dtsx</Name>
-      <LastWriteTime>2018-09-05T23:27:39.4949491Z</LastWriteTime>
+      <LastWriteTime>2018-10-04T17:05:32.2690545Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
