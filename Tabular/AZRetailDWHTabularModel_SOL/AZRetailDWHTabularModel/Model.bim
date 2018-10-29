@@ -24,12 +24,14 @@
           {
             "name": "ProductKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ProductID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductID",
             "sourceProviderType": "Integer"
           },
@@ -96,6 +98,23 @@
             }
           }
         ],
+        "hierarchies": [
+          {
+            "name": "Product Hierarchy",
+            "levels": [
+              {
+                "name": "CategoryName",
+                "ordinal": 0,
+                "column": "CategoryName"
+              },
+              {
+                "name": "ProductName",
+                "ordinal": 1,
+                "column": "ProductName"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -117,12 +136,14 @@
           {
             "name": "StoreKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "StoreKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "StoreID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "StoreID",
             "sourceProviderType": "SmallInt"
           },
@@ -163,6 +184,23 @@
             }
           }
         ],
+        "hierarchies": [
+          {
+            "name": "Location Hierarchy",
+            "levels": [
+              {
+                "name": "DivisionName",
+                "ordinal": 0,
+                "column": "DivisionName"
+              },
+              {
+                "name": "StoreName",
+                "ordinal": 1,
+                "column": "StoreName"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -184,6 +222,7 @@
           {
             "name": "TimeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "TimeKey",
             "sourceProviderType": "Integer"
           },
@@ -247,6 +286,43 @@
             }
           }
         ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {
+                "name": "FullDate",
+                "ordinal": 0,
+                "column": "FullDate"
+              },
+              {
+                "name": "YearNo",
+                "ordinal": 1,
+                "column": "YearNo"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 2,
+                "column": "Quarter"
+              },
+              {
+                "name": "MonthName",
+                "ordinal": 3,
+                "column": "MonthName"
+              },
+              {
+                "name": "WeekNo",
+                "ordinal": 4,
+                "column": "WeekNo"
+              },
+              {
+                "name": "DayNo",
+                "ordinal": 5,
+                "column": "DayNo"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -268,48 +344,56 @@
           {
             "name": "CustomerKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CustomerKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "SalesDateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "SalesDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipDateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "StoreKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "StoreKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ProductKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "LocationKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "LocationKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "OrderID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "OrderID",
             "sourceProviderType": "Integer"
           },
           {
             "name": "LineNumber",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "LineNumber",
             "sourceProviderType": "SmallInt"
           },
@@ -348,6 +432,7 @@
           {
             "name": "IsDeleted",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "IsDeleted",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "sourceProviderType": "Boolean"
@@ -410,12 +495,14 @@
           {
             "name": "CustomerKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CustomerKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "CustomerID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CustomerID",
             "sourceProviderType": "Integer"
           },
@@ -434,6 +521,7 @@
           {
             "name": "IsDeleted",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "IsDeleted",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "sourceProviderType": "Boolean"
@@ -470,12 +558,14 @@
           {
             "name": "LocationKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "LocationKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "LocationID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "LocationID",
             "sourceProviderType": "Integer"
           },
@@ -494,6 +584,7 @@
           {
             "name": "StartDate",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "StartDate",
             "formatString": "General Date",
             "sourceProviderType": "DBTimeStamp"
@@ -501,6 +592,7 @@
           {
             "name": "EndDate",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "EndDate",
             "formatString": "General Date",
             "sourceProviderType": "DBTimeStamp"
@@ -514,6 +606,23 @@
               "query": " SELECT [dbo].[_vwDimLocation].* FROM [dbo].[_vwDimLocation] ",
               "dataSource": "SqlServer localhost AZRetailDWH"
             }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Location Hierarchy",
+            "levels": [
+              {
+                "name": "State",
+                "ordinal": 0,
+                "column": "State"
+              },
+              {
+                "name": "City",
+                "ordinal": 1,
+                "column": "City"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -530,6 +639,43 @@
             "value": "dbo"
           }
         ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "cc05b272-3bb8-4286-bf78-7f6d5a4ff4a6",
+        "fromTable": "Order",
+        "fromColumn": "SalesDateKey",
+        "toTable": "Time",
+        "toColumn": "TimeKey"
+      },
+      {
+        "name": "20e74b17-8e45-4ec3-9c1e-0189f3ea6713",
+        "fromTable": "Order",
+        "fromColumn": "StoreKey",
+        "toTable": "Store",
+        "toColumn": "StoreKey"
+      },
+      {
+        "name": "5b3191ac-d1ec-4cbd-98ed-52195d451225",
+        "fromTable": "Order",
+        "fromColumn": "ProductKey",
+        "toTable": "Product",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "5a5b0427-edfa-4e49-83ce-b68b8aa330f2",
+        "fromTable": "Order",
+        "fromColumn": "CustomerKey",
+        "toTable": "Customer",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "83a1fbe9-0500-4d59-a5ac-40d09d4ff73b",
+        "fromTable": "Order",
+        "fromColumn": "LocationKey",
+        "toTable": "Location",
+        "toColumn": "LocationKey"
       }
     ],
     "annotations": [
