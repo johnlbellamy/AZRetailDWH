@@ -6,9 +6,9 @@
     "dataSources": [
       {
         "name": "SqlServer localhost AZRetailDWH",
-        "connectionString": "Provider=SQLNCLI11;Data Source=.;Initial Catalog=AZRetailDWH;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=DESKTOP-2Q06RAJ;Initial Catalog=AZRetailDWH;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
-        "account": "johnb",
+        "account": "localhost\\johnb",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -19,173 +19,11 @@
     ],
     "tables": [
       {
-        "name": "Customer",
-        "columns": [
-          {
-            "name": "CustomerKey",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "CustomerKey",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "CustomerID",
-            "dataType": "int64",
-            "sourceColumn": "CustomerID",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "FirstName",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "FirstName",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "LastName",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "LastName",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "LocationKey",
-            "dataType": "int64",
-            "sourceColumn": "LocationKey",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "IsDeleted",
-            "dataType": "boolean",
-            "sourceColumn": "IsDeleted",
-            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
-            "sourceProviderType": "Boolean"
-          },
-          {
-            "type": "calculated",
-            "name": "FirstAndLast",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": " Customer[LastName]&\",\"&Customer[FirstName]"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Customer",
-            "dataView": "full",
-            "source": {
-              "query": " SELECT [dbo].[_vwDimCustomer].* FROM [dbo].[_vwDimCustomer] ",
-              "dataSource": "SqlServer localhost AZRetailDWH"
-            }
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[_vwDimCustomer].* FROM [dbo].[_vwDimCustomer] "
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "_vwDimCustomer"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "dbo"
-          }
-        ]
-      },
-      {
-        "name": "Location",
-        "columns": [
-          {
-            "name": "LocationKey",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "LocationKey",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "LocationID",
-            "dataType": "int64",
-            "sourceColumn": "LocationID",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "City",
-            "dataType": "string",
-            "sourceColumn": "City",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "State",
-            "dataType": "string",
-            "sourceColumn": "State",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "StartDate",
-            "dataType": "dateTime",
-            "sourceColumn": "StartDate",
-            "formatString": "General Date",
-            "sourceProviderType": "DBTimeStamp"
-          },
-          {
-            "name": "EndDate",
-            "dataType": "dateTime",
-            "sourceColumn": "EndDate",
-            "formatString": "General Date",
-            "sourceProviderType": "DBTimeStamp"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Location",
-            "dataView": "full",
-            "source": {
-              "query": " SELECT [dbo].[_vwDimLocation].* FROM [dbo].[_vwDimLocation] ",
-              "dataSource": "SqlServer localhost AZRetailDWH"
-            }
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Location Hierarchy",
-            "levels": [
-              {
-                "name": "State",
-                "ordinal": 0,
-                "column": "State"
-              },
-              {
-                "name": "City",
-                "ordinal": 1,
-                "column": "City"
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[_vwDimLocation].* FROM [dbo].[_vwDimLocation] "
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "_vwDimLocation"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "dbo"
-          }
-        ]
-      },
-      {
         "name": "Product",
         "columns": [
           {
             "name": "ProductKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "ProductKey",
             "sourceProviderType": "Integer"
           },
@@ -250,29 +88,12 @@
         ],
         "partitions": [
           {
-            "name": "Product",
+            "name": "_vwDimProduct",
             "dataView": "full",
             "source": {
               "query": " SELECT [dbo].[_vwDimProduct].* FROM [dbo].[_vwDimProduct] ",
               "dataSource": "SqlServer localhost AZRetailDWH"
             }
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Product Hierarchy",
-            "levels": [
-              {
-                "name": "CategoryName",
-                "ordinal": 0,
-                "column": "CategoryName"
-              },
-              {
-                "name": "ProductName",
-                "ordinal": 1,
-                "column": "ProductName"
-              }
-            ]
           }
         ],
         "annotations": [
@@ -296,7 +117,6 @@
           {
             "name": "StoreKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "StoreKey",
             "sourceProviderType": "Integer"
           },
@@ -335,29 +155,12 @@
         ],
         "partitions": [
           {
-            "name": "Store",
+            "name": "_vwDimStore",
             "dataView": "full",
             "source": {
               "query": " SELECT [dbo].[_vwDimStore].* FROM [dbo].[_vwDimStore] ",
               "dataSource": "SqlServer localhost AZRetailDWH"
             }
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Division Hierarchy",
-            "levels": [
-              {
-                "name": "DivisionName",
-                "ordinal": 0,
-                "column": "DivisionName"
-              },
-              {
-                "name": "StoreName",
-                "ordinal": 1,
-                "column": "StoreName"
-              }
-            ]
           }
         ],
         "annotations": [
@@ -381,14 +184,12 @@
           {
             "name": "TimeKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "TimeKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "FullDateTime",
             "dataType": "dateTime",
-            "isHidden": true,
             "sourceColumn": "FullDateTime",
             "formatString": "General Date",
             "sourceProviderType": "DBTimeStamp"
@@ -421,7 +222,6 @@
             "name": "MonthName",
             "dataType": "string",
             "sourceColumn": "MonthName",
-            "sortByColumn": "Month",
             "sourceProviderType": "Char"
           },
           {
@@ -435,75 +235,16 @@
             "dataType": "int64",
             "sourceColumn": "DayNo",
             "sourceProviderType": "SmallInt"
-          },
-          {
-            "type": "calculated",
-            "name": "QuarterName",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": "\"QRT\"&Time[Quarter]"
           }
         ],
         "partitions": [
           {
-            "name": "Time",
+            "name": "_vwDimTime",
             "dataView": "full",
             "source": {
               "query": " SELECT [dbo].[_vwDimTime].* FROM [dbo].[_vwDimTime] ",
               "dataSource": "SqlServer localhost AZRetailDWH"
             }
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Full Time Hierarchy",
-            "levels": [
-              {
-                "name": "YearNo",
-                "ordinal": 0,
-                "column": "YearNo"
-              },
-              {
-                "name": "WeekNo",
-                "ordinal": 3,
-                "column": "WeekNo"
-              },
-              {
-                "name": "DayNo",
-                "ordinal": 4,
-                "column": "DayNo"
-              },
-              {
-                "name": "MonthName",
-                "ordinal": 2,
-                "column": "MonthName"
-              },
-              {
-                "name": "QuarterName",
-                "ordinal": 1,
-                "column": "QuarterName"
-              }
-            ]
-          },
-          {
-            "name": "YQM Hierarchy",
-            "levels": [
-              {
-                "name": "YearNo",
-                "ordinal": 0,
-                "column": "YearNo"
-              },
-              {
-                "name": "MonthName",
-                "ordinal": 2,
-                "column": "MonthName"
-              },
-              {
-                "name": "QuarterName",
-                "ordinal": 1,
-                "column": "QuarterName"
-              }
-            ]
           }
         ],
         "annotations": [
@@ -522,41 +263,42 @@
         ]
       },
       {
-        "name": "Orders",
+        "name": "Order",
         "columns": [
           {
             "name": "CustomerKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "CustomerKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "SalesDateKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "SalesDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipDateKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "ShipDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "StoreKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "StoreKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ProductKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "ProductKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LocationKey",
+            "dataType": "int64",
+            "sourceColumn": "LocationKey",
             "sourceProviderType": "Integer"
           },
           {
@@ -613,7 +355,7 @@
         ],
         "partitions": [
           {
-            "name": "Orders",
+            "name": "_vwFactOrders",
             "dataView": "full",
             "source": {
               "query": " SELECT [dbo].[_vwFactOrders].* FROM [dbo].[_vwFactOrders] ",
@@ -623,56 +365,28 @@
         ],
         "measures": [
           {
-            "name": "Total Sale",
-            "expression": "SUM([LineSale])",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Total Profit",
-            "expression": "SUM([LineProfit])",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Sales YTD",
-            "expression": "  TOTALYTD([Total Sale],Time[FullDateTime], All('Time'))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Sales Previous Year",
-            "expression": " CALCULATE([Total Sale], SAMEPERIODLASTYEAR(Time[FullDateTime]))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
+            "name": "Target",
+            "expression": "500000000"
           },
           {
             "name": "Minimum",
             "expression": " 0"
           },
           {
-            "name": "Target",
-            "expression": "500000000"
+            "name": "Sales Previous Year",
+            "expression": " CALCULATE([Total Sale], SAMEPERIODLASTYEAR(Time[FullDateTime]))"
+          },
+          {
+            "name": "Sales YTD",
+            "expression": "  TOTALYTD([Total Sale],Time[FullDateTime], All('Time'))"
+          },
+          {
+            "name": "Total Profit",
+            "expression": "SUM([LineProfit])"
+          },
+          {
+            "name": "Total Sale",
+            "expression": "SUM([LineSale])"
           }
         ],
         "annotations": [
@@ -689,51 +403,133 @@
             "value": "dbo"
           }
         ]
-      }
-    ],
-    "relationships": [
-      {
-        "name": "87018bd0-9f6e-433c-a79c-cc80ac76d9a9",
-        "fromTable": "Orders",
-        "fromColumn": "SalesDateKey",
-        "toTable": "Time",
-        "toColumn": "TimeKey"
       },
       {
-        "name": "4e2b7056-1e8c-434d-9b34-ad40f0dc2b0c",
-        "fromTable": "Orders",
-        "fromColumn": "ShipDateKey",
-        "toTable": "Time",
-        "toColumn": "TimeKey",
-        "isActive": false
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "sourceColumn": "CustomerKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "sourceColumn": "FirstName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "sourceColumn": "LastName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "IsDeleted",
+            "dataType": "boolean",
+            "sourceColumn": "IsDeleted",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_vwDimCustomer",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[_vwDimCustomer].* FROM [dbo].[_vwDimCustomer] ",
+              "dataSource": "SqlServer localhost AZRetailDWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[_vwDimCustomer].* FROM [dbo].[_vwDimCustomer] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "_vwDimCustomer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       },
       {
-        "name": "6c0c96d5-d6d3-466e-b1c8-2320a0c44180",
-        "fromTable": "Orders",
-        "fromColumn": "StoreKey",
-        "toTable": "Store",
-        "toColumn": "StoreKey"
-      },
-      {
-        "name": "8d7a1a56-ce92-4790-a80a-995c07216bb3",
-        "fromTable": "Orders",
-        "fromColumn": "ProductKey",
-        "toTable": "Product",
-        "toColumn": "ProductKey"
-      },
-      {
-        "name": "763393a5-fc89-4480-9068-32a77dc79c09",
-        "fromTable": "Orders",
-        "fromColumn": "CustomerKey",
-        "toTable": "Customer",
-        "toColumn": "CustomerKey"
-      },
-      {
-        "name": "73c9e3d1-8b2e-4a4f-8000-69a47e5d3d73",
-        "fromTable": "Customer",
-        "fromColumn": "LocationKey",
-        "toTable": "Location",
-        "toColumn": "LocationKey"
+        "name": "Location",
+        "columns": [
+          {
+            "name": "LocationKey",
+            "dataType": "int64",
+            "sourceColumn": "LocationKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LocationID",
+            "dataType": "int64",
+            "sourceColumn": "LocationID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StartDate",
+            "dataType": "dateTime",
+            "sourceColumn": "StartDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "EndDate",
+            "dataType": "dateTime",
+            "sourceColumn": "EndDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_vwDimLocation",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[_vwDimLocation].* FROM [dbo].[_vwDimLocation] ",
+              "dataSource": "SqlServer localhost AZRetailDWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[_vwDimLocation].* FROM [dbo].[_vwDimLocation] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "_vwDimLocation"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "annotations": [
